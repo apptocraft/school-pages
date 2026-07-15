@@ -1,14 +1,18 @@
 const params = new URLSearchParams(window.location.search);
-
 const studentId = params.get("id");
 
+const loadingText = document.getElementById("loadingText");
+
 if (!studentId) {
+
+    document.getElementById("loading-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
 
     document.body.innerHTML = `
     <div class="container">
         <div class="card" style="padding:40px;text-align:center;">
-            <h2 style="color:#c62828;">Invalid Request</h2>
-            <p>No Student ID found.</p>
+            <h2 style="color:#c62828;">Student Verification Portal</h2>
+            <p>Please scan the QR Code printed on the Student ID Card.</p>
         </div>
     </div>
     `;
@@ -16,6 +20,22 @@ if (!studentId) {
     throw new Error("No Student ID");
 
 }
+
+setTimeout(() => {
+    loadingText.innerHTML = "Connecting to Secure Server...";
+}, 300);
+
+setTimeout(() => {
+    loadingText.innerHTML = "Retrieving Student Record...";
+}, 1200);
+
+setTimeout(() => {
+    loadingText.innerHTML = "Validating Digital Identity...";
+}, 2200);
+
+setTimeout(() => {
+    loadingText.innerHTML = "✔ Verification Successful";
+}, 3200);
 
 fetch("students.json")
 
@@ -35,33 +55,33 @@ fetch("students.json")
 
     if (!student) {
 
-        document.body.innerHTML = `
-        <div class="container">
-            <div class="card" style="padding:40px;text-align:center;">
-                <h2 style="color:#c62828;">Student Not Found</h2>
-                <p>The QR Code is invalid or the student record does not exist.</p>
+        setTimeout(() => {
+
+            document.body.innerHTML = `
+            <div class="container">
+                <div class="card" style="padding:40px;text-align:center;">
+                    <h2 style="color:#c62828;">Student Not Found</h2>
+                    <p>The QR Code is invalid or the student record does not exist.</p>
+                </div>
             </div>
-        </div>
-        `;
+            `;
+
+        },3500);
 
         return;
 
     }
 
     document.getElementById("name").textContent = student.name;
-
     document.getElementById("class").textContent = student.class;
-
     document.getElementById("father").textContent = student.father;
-
     document.getElementById("dob").textContent = formatDate(student.dob);
-
     document.getElementById("mobile").textContent = student.mobile;
 
     document.getElementById("address").innerHTML =
-        `Vill. ${student.vill}<br>
-         P.S. ${student.ps}<br>
-         Dist. ${student.dist}`;
+    `Vill. ${student.vill}<br>
+     P.S. ${student.ps}<br>
+     Dist. ${student.dist}`;
 
     document.title = student.name + " | Student Verification";
 
@@ -80,23 +100,31 @@ fetch("students.json")
             minute: "2-digit"
         });
 
+    setTimeout(()=>{
+
+        document.getElementById("loading-screen").style.display="none";
+        document.getElementById("main-content").style.display="block";
+
+    },3500);
+
 })
 
 .catch(error => {
 
     console.error(error);
 
-    document.body.innerHTML = `
-    <div class="container">
-        <div class="card" style="padding:40px;text-align:center;">
-            <h2 style="color:#c62828;">Unable to Load Student Data</h2>
+    setTimeout(()=>{
 
-            <p>
-            Please try again later.
-            </p>
+        document.body.innerHTML=`
+        <div class="container">
+            <div class="card" style="padding:40px;text-align:center;">
+                <h2 style="color:#c62828;">Unable to Load Student Data</h2>
+                <p>Please try again later.</p>
+            </div>
         </div>
-    </div>
-    `;
+        `;
+
+    },3500);
 
 });
 
@@ -104,13 +132,11 @@ function formatDate(dateString){
 
     const parts = dateString.split("-");
 
-    if(parts.length !== 3){
-
+    if(parts.length!==3){
         return dateString;
-
     }
 
-    const months = [
+    const months=[
         "January","February","March","April","May","June",
         "July","August","September","October","November","December"
     ];
