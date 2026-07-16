@@ -71,19 +71,19 @@ if (!studentId) {
 
 setTimeout(() => {
     loadingText.innerHTML = "Connecting to Secure Server...";
-}, 300);
+}, 100);
 
 setTimeout(() => {
     loadingText.innerHTML = "Retrieving Student Record...";
-}, 1200);
+}, 500);
 
 setTimeout(() => {
     loadingText.innerHTML = "Validating Digital Identity...";
-}, 2200);
+}, 900);
 
 setTimeout(() => {
     loadingText.innerHTML = "Finalizing Verification...";
-}, 3200);
+}, 1300);
 
 fetch(`students/${studentId}.json`, {
     cache: "no-store"
@@ -129,14 +129,12 @@ fetch(`students/${studentId}.json`, {
             minute: "2-digit"
         });
 
-    loadingText.innerHTML = "✔ Verification Successful";
-
     setTimeout(function(){
 
         document.getElementById("loading-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
 
-    },3500);
+    },2300);
 
 })
 
