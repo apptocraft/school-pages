@@ -85,6 +85,7 @@ setTimeout(() => {
     loadingText.innerHTML = "Finalizing Verification...";
 }, 3200);
 
+const startTime = Date.now();
 fetch(`students/${studentId}.json`, {
     cache: "no-store"
 })
@@ -129,14 +130,17 @@ fetch(`students/${studentId}.json`, {
             minute: "2-digit"
         });
 
-    loadingText.innerHTML = "✔ Verification Successful";
+loadingText.innerHTML = "✔ Verification Successful";
 
-    setTimeout(function(){
+const elapsed = Date.now() - startTime;
+const minLoading = 1000; // Minimum 1 second
 
-        document.getElementById("loading-screen").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
+setTimeout(() => {
 
-    },3500);
+    document.getElementById("loading-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+
+}, Math.max(300, minLoading - elapsed));
 
 })
 
