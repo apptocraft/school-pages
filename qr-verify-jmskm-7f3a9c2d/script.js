@@ -14,13 +14,13 @@ if (!studentId) {
 
         <img src="logo.png" style="width:90px;margin-bottom:15px;">
 
-        <h3 style="margin-bottom:10px;color:#0d47a1;">
+        <h2 style="margin-bottom:10px;color:#0d47a1;">
             Student Verification Portal
-        </h3>
+        </h2>
 
-        <h4 style="margin-bottom:15px;">
+        <h3 style="margin-bottom:15px;">
             Welcome to the Official Digital Student Verification System
-        </h4>
+        </h3>
 
         <h2 style="margin-bottom:5px;">
             Jamia Mahmudia Sawtul<br>Koran Madrasa
@@ -82,15 +82,17 @@ setTimeout(() => {
 }, 2200);
 
 setTimeout(() => {
-    loadingText.innerHTML = "✔ Verification Successful";
+    loadingText.innerHTML = "Finalizing Verification...";
 }, 3200);
 
-fetch(`students/${studentId}.json`)
+fetch(`students/${studentId}.json`, {
+    cache: "no-store"
+})
 
 .then(response => {
 
     if (!response.ok) {
-        throw new Error("Student not found");
+        throw new Error("Student record not found");
     }
 
     return response.json();
@@ -127,6 +129,8 @@ fetch(`students/${studentId}.json`)
             minute: "2-digit"
         });
 
+    loadingText.innerHTML = "✔ Verification Successful";
+
     setTimeout(function(){
 
         document.getElementById("loading-screen").style.display = "none";
@@ -140,7 +144,33 @@ fetch(`students/${studentId}.json`)
 
     console.error(error);
 
-    alert("Student Not Found");
+    setTimeout(() => {
+
+        document.getElementById("loading-screen").style.display = "none";
+
+        document.body.innerHTML = `
+        <div class="container">
+            <div class="card" style="padding:40px;text-align:center;max-width:700px;margin:auto;">
+
+                <img src="logo.png" style="width:90px;margin-bottom:20px;">
+
+                <h2 style="color:#d32f2f;">
+                    Student Record Not Found
+                </h2>
+
+                <p>
+                    The QR Code or Student ID is invalid.
+                </p>
+
+                <p style="color:#666;">
+                    Please scan the original QR Code printed on the Student ID Card.
+                </p>
+
+            </div>
+        </div>
+        `;
+
+    }, 3500);   // same time as success
 
 });
 
