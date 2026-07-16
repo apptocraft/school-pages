@@ -168,7 +168,7 @@ fetch(`students/${studentId}.json`, {
         </div>
         `;
 
-    }, 3500);   // same time as success
+    }, 2100);   // same time as success
 
 });
 
