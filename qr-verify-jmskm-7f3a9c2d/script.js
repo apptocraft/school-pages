@@ -134,7 +134,7 @@ fetch(`students/${studentId}.json`, {
         document.getElementById("loading-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
 
-    },2300);
+    },2600);
 
 })
 
@@ -168,7 +168,7 @@ fetch(`students/${studentId}.json`, {
         </div>
         `;
 
-    }, 2300);   // same time as success
+    }, 2600);   // same time as success
 
 });
 
