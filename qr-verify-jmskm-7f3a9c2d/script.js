@@ -14,9 +14,9 @@ if (!studentId) {
 
         <img src="logo.png" style="width:90px;margin-bottom:15px;">
 
-        <h2 style="margin-bottom:10px;color:#0d47a1;">
+        <h3 style="margin-bottom:10px;color:#0d47a1;">
             Student Verification Portal
-        </h2>
+        </h3>
 
         <h3 style="margin-bottom:15px;">
             Welcome to the Official Digital Student Verification System
