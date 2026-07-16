@@ -69,21 +69,96 @@ if (!studentId) {
 
 }
 
-setTimeout(() => {
-    loadingText.innerHTML = "Connecting to Secure Server...";
-}, 200);
+// -------------------------------------
+// Professional Random Verification Flow
+// -------------------------------------
 
-setTimeout(() => {
-    loadingText.innerHTML = "Retrieving Student Record...";
-}, 600);
+function random(min,max){
+    return Math.floor(Math.random()*(max-min+1))+min;
+}
 
-setTimeout(() => {
-    loadingText.innerHTML = "Validating Digital Identity...";
-}, 1200);
+// Request ID
 
-setTimeout(() => {
-    loadingText.innerHTML = "Finalizing Verification...";
-}, 2000);
+function generateReference() {
+
+    const chars = "ABCDEF0123456789";
+
+    let ref = "";
+
+    for (let group = 0; group < 3; group++) {
+
+        if (group > 0) ref += "-";
+
+        for (let i = 0; i < 4; i++) {
+
+            ref += chars.charAt(
+                Math.floor(Math.random() * chars.length)
+            );
+
+        }
+
+    }
+
+    return ref;
+
+}
+
+const requestId = generateReference();
+
+// First message always fixed
+
+loadingText.innerHTML =
+`<strong>Request ID:</strong> ${requestId}<br><br>
+Connecting to Secure Server...`;
+
+// Remaining messages
+
+const allMessages = [
+
+    "Checking Official Records...",
+    "Searching Student Database...",
+    "Locating Student Record...",
+    "Loading Student Information...",
+    "Reading Student Profile...",
+    "Verifying Student Details...",
+    "Preparing Verification...",
+    "Generating Verification Report...",
+    "Loading Official Record...",
+    "Verification in Progress..."
+
+];
+
+// Shuffle
+
+const shuffled = [...allMessages].sort(() => Math.random()-0.5);
+
+// Random number of messages
+
+const count = random(2,5);
+
+const messages = shuffled.slice(0,count);
+
+let totalDelay = random(200,500);
+
+for(let i=0;i<messages.length;i++){
+
+    const wait = random(150,700);
+
+    totalDelay += wait;
+
+    setTimeout(()=>{
+
+        loadingText.innerHTML =
+        `<strong>Request ID:</strong> ${requestId}<br><br>` +
+        messages[i];
+
+    },totalDelay);
+
+}
+
+// Random finish delay
+
+totalDelay += random(200,500);
 
 fetch(`students/${studentId}.json`, {
     cache: "no-store"
@@ -134,7 +209,7 @@ fetch(`students/${studentId}.json`, {
         document.getElementById("loading-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
 
-    },2800);
+    }, totalDelay);
 
 })
 
@@ -168,7 +243,7 @@ fetch(`students/${studentId}.json`, {
         </div>
         `;
 
-    }, 2800);   // same time as success
+    }, totalDelay);   // same time as success
 
 });
 
