@@ -83,7 +83,7 @@ setTimeout(() => {
 
 setTimeout(() => {
     loadingText.innerHTML = "Finalizing Verification...";
-}, 1800);
+}, 2000);
 
 fetch(`students/${studentId}.json`, {
     cache: "no-store"
@@ -134,7 +134,7 @@ fetch(`students/${studentId}.json`, {
         document.getElementById("loading-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
 
-    },2600);
+    },2800);
 
 })
 
@@ -168,7 +168,7 @@ fetch(`students/${studentId}.json`, {
         </div>
         `;
 
-    }, 2600);   // same time as success
+    }, 2800);   // same time as success
 
 });
 
