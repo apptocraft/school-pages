@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Verification</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= LOADING SCREEN ================= -->
+
+<div id="loading-screen">
+
+    <div class="loader-card">
+
+        <img src="logo.png" class="loader-logo">
+
+        <h2>Jamia Mahmudia</h2>
+
+        <p>Sawtul Koran Madrasa</p>
+
+        <div class="spinner"></div>
+
+        <h3 id="loadingText">
+            Connecting to Secure Server...
+        </h3>
+
+        <div class="progress">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+        <p class="loading-note">
+
+            Digital Verification Processing...
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<div id="main-content" style="display:none;">
+
+<div class="container">
+
+<div class="card">
+
+<header class="header">
+
+<div class="logo-box">
+<img src="logo.png" class="logo" alt="School Logo">
+</div>
+<h2 class="school-name">
+    Jamia Mahmudia Sawtul Koran Madrasa
+</h2>
+
+
+<p>
+Bhurulia, Kaliganj, Plassey<br>
+Nadia, West Bengal
+</p>
+
+<div class="school-info">
+
+<div>
+<strong>Reg. No.</strong><br>
+S/IL/54232
+</div>
+
+<div>
+<strong>Mobile</strong><br>
+7501479636 / 9933767534
+</div>
+
+</div>
+
+</header>
+
+<div class="verify-banner">
+
+<span>✔</span>
+
+DIGITALLY VERIFIED STUDENT
+
+</div>
+
+<section class="student-name">
+
+<h3 id="name">Loading...</h3>
+
+<p id="class"></p>
+
+</section>
+
+<section class="details">
+
+<div class="item">
+<div class="icon">👨</div>
+<div>
+<label>Father's Name</label>
+<p id="father"></p>
+</div>
+</div>
+
+<div class="item">
+<div class="icon">🎂</div>
+<div>
+<label>Date of Birth</label>
+<p id="dob"></p>
+</div>
+</div>
+
+<div class="item">
+<div class="icon">📞</div>
+<div>
+<label>Mobile Number</label>
+<p id="mobile"></p>
+</div>
+</div>
+
+<div class="item">
+<div class="icon">📍</div>
+<div>
+<label>Address</label>
+<p id="address"></p>
+</div>
+</div>
+
+</section>
+
+<section class="verification">
+
+<div class="tick">✔</div>
+
+<h4>Verification Successful</h4>
+
+<p>
+
+This student has been successfully verified as an enrolled student of
+
+<strong>
+
+Jamia Mahmudia Sawtul Koran Madrasa
+
+</strong>
+
+</p>
+
+</section>
+
+<footer>
+
+<p>
+
+Powered by
+
+<h4>
+
+Jamia Mahmudia Sawtul Koran Madrasa
+
+</h4>
+
+</p>
+
+<p id="verifyDate"></p>
+
+</footer>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
