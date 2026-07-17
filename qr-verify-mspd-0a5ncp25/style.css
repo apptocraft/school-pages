@@ -1,0 +1,435 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#e8fbfb,#f5f5f5);
+    padding:20px;
+    color:#222;
+}
+
+.container{
+    max-width:480px;
+    margin:auto;
+}
+
+.card{
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    background:linear-gradient(135deg,#008C8E,#00A1A3);
+    color:#fff;
+    text-align:center;
+    padding:30px 20px 25px;
+}
+
+.logo-box{
+    width:95px;
+    height:95px;
+    margin:auto;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.logo{
+    width:72px;
+    height:72px;
+    object-fit:contain;
+}
+
+.header h1{
+    margin-top:18px;
+    font-size:24px;
+    font-weight:700;
+}
+
+.header h2{
+    font-size:18px;
+    font-weight:500;
+    margin-top:4px;
+}
+
+.header p{
+    margin-top:14px;
+    font-size:16px;
+    line-height:28px;
+    opacity:1;
+    font-weight:500;
+}
+
+.school-info{
+    display:flex;
+    justify-content:space-between;
+    margin-top:18px;
+    gap:10px;
+}
+
+.school-info div{
+    flex:1;
+    background:rgba(255,255,255,.15);
+    padding:14px;
+    border-radius:12px;
+    font-size:15px;
+    line-height:1.6;
+}
+
+.school-info strong{
+    font-size:16px;
+    display:block;
+    margin-bottom:6px;
+}
+
+.school-name{
+    margin-top:18px;
+    font-size:28px;
+    font-weight:700;
+    line-height:1.25;
+    color:#fff;
+}
+
+/* ================= VERIFIED ================= */
+
+.verify-banner{
+    background:#00B7BA;
+    color:#fff;
+    text-align:center;
+    padding:14px;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.4px;
+}
+
+.verify-banner span{
+    margin-right:8px;
+    font-size:18px;
+}
+
+/* ================= NAME ================= */
+
+.student-name{
+    text-align:center;
+    padding:28px 20px;
+}
+
+.student-name h3{
+    font-size:28px;
+    color:#008C8E;
+    font-weight:700;
+}
+
+.student-name p{
+    margin-top:8px;
+    color:#666;
+    font-size:17px;
+}
+
+/* ================= DETAILS ================= */
+
+.details{
+    padding:0 18px 20px;
+}
+
+.item{
+    display:flex;
+    gap:15px;
+    background:#f8f9fa;
+    margin-bottom:15px;
+    padding:16px;
+    border-radius:15px;
+    border-left:5px solid #008C8E;
+}
+
+.icon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#008C8E;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+    flex-shrink:0;
+}
+
+.item label{
+    display:block;
+    color:#777;
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.item p{
+    font-size:16px;
+    font-weight:600;
+    word-break:break-word;
+}
+
+/* ================= VERIFICATION ================= */
+
+.verification{
+    margin:20px;
+    background:#eefdfd;
+    border:2px solid #00B7BA;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+}
+
+.tick{
+    width:70px;
+    height:70px;
+    margin:auto;
+    border-radius:50%;
+    background:#00B7BA;
+    color:#fff;
+    font-size:34px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.verification h4{
+    color:#008C8E;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.verification p{
+    color:#555;
+    line-height:28px;
+    font-size:15px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#fafafa;
+    border-top:1px solid #eee;
+}
+
+footer p{
+    color:#666;
+    line-height:24px;
+}
+
+footer strong{
+    color:#008C8E;
+}
+
+#verifyDate{
+    margin-top:12px;
+    font-size:13px;
+    color:#888;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:480px){
+
+body{
+    padding:10px;
+}
+
+.header{
+    padding:35px 25px 30px;
+}
+
+.logo-box{
+    width:105px;
+    height:105px;
+}
+
+.logo{
+    width:80px;
+    height:80px;
+}
+
+.header h1{
+    font-size:21px;
+}
+
+.header h2{
+    font-size:16px;
+}
+
+.student-name h3{
+    font-size:24px;
+}
+
+.school-info{
+    flex-direction:column;
+}
+
+.item{
+    padding:14px;
+}
+
+.icon{
+    width:42px;
+    height:42px;
+    font-size:18px;
+}
+
+.verification{
+    margin:15px;
+}
+
+}
+
+/* ===========================
+   LOADING SCREEN
+=========================== */
+
+#loading-screen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#f5f8f6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.loader-card{
+    width:90%;
+    max-width:380px;
+    background:#fff;
+    border-radius:20px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.15);
+}
+
+.loader-logo{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    margin-bottom:15px;
+}
+
+.loader-card h2{
+    color:#008C8E;
+    font-size:24px;
+    margin-bottom:5px;
+}
+
+.loader-card p{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.spinner{
+    width:65px;
+    height:65px;
+    border:6px solid #e3e3e3;
+    border-top:6px solid #008C8E;
+    border-radius:50%;
+    margin:20px auto;
+    animation:spin 1s linear infinite;
+}
+
+.request-id{
+    display:inline-block;
+    padding:4px 10px;
+    background:#eef3f8;
+    border:1px solid #d5dde8;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+    color:#4b5563;
+    font-family:monospace;
+    letter-spacing:1px;
+}
+
+@keyframes spin{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+#loadingText{
+    color:#008C8E;
+    font-size:15px;
+    line-height:1.4;
+    margin-bottom:20px;
+    min-height:50px;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#008C8E,#20b657);
+    animation:loadingBar 3.5s linear forwards;
+}
+
+@keyframes loadingBar{
+
+0%{
+width:0%;
+}
+
+100%{
+width:100%;
+}
+
+}
+
+.loading-note{
+    margin-top:18px;
+    color:#777;
+    font-size:14px;
+    font-style:italic;
+}
+
+#main-content{
+    display:none;
+    animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
