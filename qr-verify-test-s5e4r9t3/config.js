@@ -21,7 +21,7 @@ const CONFIG = {
             {
                 label: "📧 Email",
                 value: "username@email.com",
-                stack: false
+                stack: true
             },
             {
                 label: "🌐 Website",
