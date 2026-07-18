@@ -14,7 +14,7 @@ const CONFIG = {
         info: [
 
             {
-                label: "📞 Mobile",
+                label: "☎️ Mobile",
                 value: "9900112233",
                 stack: false
             },
