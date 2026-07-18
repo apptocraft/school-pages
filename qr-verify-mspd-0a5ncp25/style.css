@@ -98,20 +98,13 @@ body{
     margin-top:14px;
     font-size:16px;
     line-height:28px;
-    opacity:1;
     font-weight:500;
-}
-
-.school-info{
-    margin-top:18px;
-    background:rgba(255,255,255,.12);
-    border-radius:14px;
-    overflow:hidden;
 }
 
 .school-info-item{
     display:flex;
-    align-items:center;
+    align-items:flex-start;
+    gap:10px;
     padding:14px 18px;
     border-bottom:1px solid rgba(255,255,255,.15);
 }
@@ -120,16 +113,36 @@ body{
     border-bottom:none;
 }
 
-.school-info-item strong{
-    width:110px;
+.school-info-item .label{
     flex-shrink:0;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+.school-info-item .value{
+    flex:1;
+    min-width:0;
+    text-align:left;
+    overflow-wrap:anywhere;
+    line-height:22px;
+}
+
+/* When JS add stack class */
+
+.school-info-item.stack{
+    display:block;
+    text-align:left;
+}
+
+.school-info-item.stack .label{
+    display:block;
+    margin-bottom:6px;
     font-weight:600;
 }
 
-.school-info-item span{
-    flex:1;
-    text-align:left;
-    opacity:.95;
+.school-info-item.stack .value{
+    display:block;
+    word-break:break-word;
 }
 
 /* ==========================================================
@@ -250,7 +263,6 @@ body{
 .verification h4{
     color:var(--primary);
     font-size:20px;
-    margin-bottom:12px;
     margin:0 0 12px;
 }
 

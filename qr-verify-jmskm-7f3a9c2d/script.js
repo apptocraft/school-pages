@@ -13,12 +13,7 @@ document.getElementById("loadingSchoolName").textContent = CONFIG.school.name;
 
 const loadingTagline = document.getElementById("loadingSchoolTagline");
 
-if (CONFIG.school.tagline !== "") {
-    loadingTagline.textContent = CONFIG.school.tagline;
-} else {
-    loadingTagline.style.display = "none";
-}
-
+setTagline(loadingTagline);
 
 // Main Header | School Details
 document.getElementById("schoolLogo").src = CONFIG.school.logo;
@@ -26,29 +21,52 @@ document.getElementById("schoolName").textContent = CONFIG.school.name;
 
 const schoolTagline = document.getElementById("schoolTagline");
 
-if (CONFIG.school.tagline !== "") {
-    schoolTagline.textContent = `(${CONFIG.school.tagline})`;
-} else {
-    schoolTagline.style.display = "none";
-}
+setTagline(schoolTagline, true);
 
 document.getElementById("schoolAddress").innerHTML =
     CONFIG.school.address.replace(/\n/g, "<br>");
 
 const schoolInfo = document.getElementById("schoolInfo");
 
-schoolInfo.innerHTML = "";
+schoolInfo.innerHTML = getSchoolInfoHTML();
 
-CONFIG.school.info.forEach(item => {
+function getSchoolInfoHTML() {
 
-    schoolInfo.innerHTML += `
-        <div class="school-info-item">
-            <strong>${item.label} :</strong>
-            <span>${item.value}</span>
+    return CONFIG.school.info.map(item => `
+        <div class="school-info-item ${item.stack ? "stack" : ""}">
+            <div class="label">${item.label} :</div>
+            <div class="value">${item.value}</div>
+        </div>
+    `).join("");
+
+}
+
+function setTagline(element, wrap = false) {
+
+    if (CONFIG.school.tagline) {
+        element.textContent = wrap
+            ? `(${CONFIG.school.tagline})`
+            : CONFIG.school.tagline;
+    } else {
+        element.style.display = "none";
+    }
+
+}
+
+function showMessagePage(content) {
+
+    document.getElementById("loading-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+
+    document.body.innerHTML = `
+        <div class="container">
+            <div class="card" style="padding:40px;text-align:center;max-width:700px;margin:auto;">
+                ${content}
+            </div>
         </div>
     `;
 
-});
+}
 
 // Main Header | Verification Successful
 document.getElementById("verificationTitle").textContent =
@@ -72,13 +90,7 @@ document.getElementById("footerTitle").textContent =
 
 if (!studentId) {
 
-    document.getElementById("loading-screen").style.display = "none";
-    document.getElementById("main-content").style.display = "block";
-
-    document.body.innerHTML = `
-<div class="container">
-    <div class="card" style="padding:40px;text-align:center;max-width:700px;margin:auto;">
-
+    showMessagePage(`
         <img src="${CONFIG.school.logo}" style="width:90px;margin-bottom:15px;">
 
         <h2 style="margin-bottom:10px;color:#0d47a1;">
@@ -117,20 +129,17 @@ if (!studentId) {
 
         <hr style="margin:25px 0;">
 
-        <p>
-    ${CONFIG.school.info.map(item => `
-        <strong>${item.label}:</strong> ${item.value}
-    `).join("<br>")}
-        </p>
+        <div>
+
+            ${getSchoolInfoHTML()}
+
+        </div>
 
         <p style="margin-top:25px;color:#777;font-size:13px;">
             © ${new Date().getFullYear()} ${schoolTitleCase}<br>
             All Rights Reserved
         </p>
-
-    </div>
-</div>
-    `;
+    `);
 
     throw new Error("No Student ID");
 
@@ -248,7 +257,7 @@ fetch(`students/${studentId}.json`, {
 
     const detailsContainer = document.getElementById("studentDetails");
 
-    detailsContainer.innerHTML = "";
+    const html = [];
 
     CONFIG.student.fields
         .filter(field => field.key !== "name" && field.key !== "class")
@@ -296,17 +305,18 @@ fetch(`students/${studentId}.json`, {
 
             if (!value) return;
 
-            detailsContainer.innerHTML += `
-                <div class="item">
-                    <div class="icon">${field.icon || ""}</div>
-                    <div>
-                        <label>${field.label}</label>
-                        <p>${value}</p>
+                html.push(`
+                    <div class="item">
+                        <div class="icon">${field.icon || ""}</div>
+                        <div>
+                            <label>${field.label}</label>
+                            <p>${value}</p>
+                        </div>
                     </div>
-                </div>
-            `;
+                `);
         });
 
+    detailsContainer.innerHTML = html.join("");
 
     document.title = student.name + " | Student Verification";
 
@@ -338,33 +348,24 @@ fetch(`students/${studentId}.json`, {
 
 .catch(error => {
 
-    console.error(error);
-
     setTimeout(() => {
 
-        document.getElementById("loading-screen").style.display = "none";
+        showMessagePage(`
 
-        document.body.innerHTML = `
-        <div class="container">
-            <div class="card" style="padding:40px;text-align:center;max-width:700px;margin:auto;">
+            <img src="${CONFIG.school.logo}" style="width:90px;margin-bottom:20px;">
 
-                <img src="${CONFIG.school.logo}" style="width:90px;margin-bottom:20px;">
+            <h2 style="color:#d32f2f;">
+                Student Record Not Found
+            </h2>
 
-                <h2 style="color:#d32f2f;">
-                    Student Record Not Found
-                </h2>
+            <p>
+                The QR Code or Student ID is invalid.
+            </p>
 
-                <p>
-                    The QR Code or Student ID is invalid.
-                </p>
-
-                <p style="color:#666;">
-                    Please scan the original QR Code printed on the Student ID Card.
-                </p>
-
-            </div>
-        </div>
-        `;
+            <p style="color:#666;">
+                Please scan the original QR Code printed on the Student ID Card.
+            </p>
+        `);
 
     }, totalDelay);   // same time as success
 

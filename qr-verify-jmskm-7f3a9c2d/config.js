@@ -15,12 +15,14 @@ const CONFIG = {
 
            {
                 label: "📑 Reg. No.",
-                value: "S/IL/54232"
+                value: "S/IL/54232",
+                stack: false
             },
 
             {
                 label: "☎️ Mobile",
-                value: "7501479636 / 9933767534"
+                value: "7501479636 / 9933767534",
+                stack: true
             }
 
         ]
