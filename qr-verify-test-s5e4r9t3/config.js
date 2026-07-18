@@ -15,13 +15,18 @@ const CONFIG = {
 
             {
                 label: "📞 Mobile",
-                value: "Contact Number",
+                value: "9900112233",
                 stack: false
             },
             {
                 label: "📧 Email",
                 value: "username@email.com",
-                stack: true
+                stack: false
+            },
+            {
+                label: "🌐 Website",
+                value: "www.domain.com",
+                stack: false
             }
 
         ]
