@@ -20,7 +20,7 @@ const CONFIG = {
             },
             {
                 label: "📧 Email",
-                value: "username@email.com",
+                value: "username@domain.com",
                 stack: true
             },
             {
