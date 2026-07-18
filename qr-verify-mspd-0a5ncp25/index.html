@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Verification</title>
+
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ================= LOADING SCREEN ================= -->
+
+    <div id="loading-screen">
+
+        <div class="loader-card">
+
+            <img id="loadingSchoolLogo" class="logo" alt="School Logo">
+
+            <h2 id="loadingSchoolName"></h2>
+
+            <p id="loadingSchoolTagline"></p>
+
+            <div class="spinner"></div>
+
+            <h3 id="loadingText">
+                Connecting to Secure Server...
+            </h3>
+
+            <div class="progress">
+
+                <div class="progress-bar"></div>
+
+            </div>
+
+            <p class="loading-note">
+
+                Digital Verification Processing...
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <div id="main-content" style="display:none;">
+
+        <div class="container">
+
+            <div class="card">
+
+                <header class="header">
+
+                    <div class="logo-box">
+                        <img id="schoolLogo" class="logo" alt="School Logo">
+                    </div>
+
+                    <h1 id="schoolName" class="school-name"></h1>
+                    
+                    <h4 id="schoolTagline"></h4>
+
+                    <p id="schoolAddress"></p>
+
+                    <div id="schoolInfo" class="school-info"></div>
+
+                </header>
+
+                <div class="verify-banner">
+
+                    <span>✔</span>
+
+                    DIGITALLY VERIFIED STUDENT
+
+                </div>
+
+                <section class="student-name">
+
+                    <h3 id="name"></h3>
+
+                    <h4 id="class"></h4>
+
+                </section>
+
+                <section id="studentDetails" class="details"></section>
+
+                <section class="verification">
+
+                    <div class="tick">✔</div>
+
+                    <h4 id="verificationTitle"></h4>
+
+                    <p id="verificationMessage"></p>
+
+                </section>
+
+                <footer>
+
+                    <p id="footerText"></p>
+
+                    <h4 id="footerTitle"></h4>
+
+                    <p id="verifyDate"></p>
+
+                </footer>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
