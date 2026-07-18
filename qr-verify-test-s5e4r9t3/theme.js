@@ -82,7 +82,7 @@ function randomTheme() {
 
     btn.innerHTML = `
         <div style="font-size:14px;font-weight:600;">Change 🎨</div>
-        <div style="font-size:12px;font-weight:400;opacity:.9;">🎨 ${themeName}</div>
+        <div style="font-size:12px;font-weight:400;opacity:.9;">${themeName}</div>
     `;
 }
 
