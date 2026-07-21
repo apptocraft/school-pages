@@ -145,6 +145,20 @@ body{
     word-break:break-word;
 }
 
+.auto-link{
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dotted currentColor;
+    transition: all .2s ease;
+    word-break: break-word;
+}
+
+.auto-link:hover{
+    opacity: .85;
+    border-bottom-style: solid;
+}
+
 /* ==========================================================
    VERIFY BANNER
 ========================================================== */

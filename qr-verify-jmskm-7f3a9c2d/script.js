@@ -38,7 +38,7 @@ function getSchoolInfoHTML() {
 
         // Email
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-            value = `<a href="mailto:${value}">${value}</a>`;
+            value = `<a class="auto-link" href="mailto:${value}">${value}</a>`;
         }
 
         // Website
@@ -50,7 +50,7 @@ function getSchoolInfoHTML() {
                 url = "https://" + url;
             }
 
-            value = `<a href="${url}" target="_blank" rel="noopener">${item.value}</a>`;
+            value = `<a class="auto-link" href="${url}" target="_blank" rel="noopener">${item.value}</a>`;
         }
 
         return `
