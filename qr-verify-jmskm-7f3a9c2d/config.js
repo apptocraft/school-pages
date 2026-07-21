@@ -67,18 +67,6 @@ const CONFIG = {
             },
 
             {
-                key: "dob",
-                label: "Date of Birth",
-                icon: "🎂"
-            },
-
-            {
-                key: "mobile",
-                label: "Mobile Number",
-                icon: "📞"
-            },
-
-            {
                 key: "address",
                 label: "Address",
                 icon: "📍"
