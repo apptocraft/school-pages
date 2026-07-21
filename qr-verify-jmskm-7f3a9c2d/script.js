@@ -32,12 +32,35 @@ schoolInfo.innerHTML = getSchoolInfoHTML();
 
 function getSchoolInfoHTML() {
 
-    return CONFIG.school.info.map(item => `
-        <div class="school-info-item ${item.stack ? "stack" : ""}">
-            <div class="label">${item.label} :</div>
-            <div class="value">${item.value}</div>
-        </div>
-    `).join("");
+    return CONFIG.school.info.map(item => {
+
+        let value = item.value;
+
+        // Email
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            value = `<a href="mailto:${value}">${value}</a>`;
+        }
+
+        // Website
+        else if (/^(https?:\/\/|www\.|[\w-]+\.[a-z]{2,})/i.test(value)) {
+
+            let url = value;
+
+            if (!/^https?:\/\//i.test(url)) {
+                url = "https://" + url;
+            }
+
+            value = `<a href="${url}" target="_blank" rel="noopener">${item.value}</a>`;
+        }
+
+        return `
+            <div class="school-info-item ${item.stack ? "stack" : ""}">
+                <div class="label">${item.label} :</div>
+                <div class="value">${value}</div>
+            </div>
+        `;
+
+    }).join("");
 
 }
 
